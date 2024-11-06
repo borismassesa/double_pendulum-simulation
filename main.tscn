@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://duk17w30gdwon"]
+
+[ext_resource type="Script" path="res://scripts/camera.gd" id="1_wdc7y"]
+
+[node name="Main" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+script = ExtResource("1_wdc7y")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+
+[node name="PendulumSystem" type="Node3D" parent="."]
+
+[node name="Pivot" type="Node3D" parent="PendulumSystem"]
+
+[node name="Arm1" type="Node3D" parent="PendulumSystem/Pivot"]
+
+[node name="Arm2" type="Node3D" parent="PendulumSystem/Pivot"]
+
+[node name="Debug" type="Node3D" parent="PendulumSystem"]
