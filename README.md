@@ -30,9 +30,8 @@ representation of the pendulum.
 
 
 **Installation**
-Prerequisites:
- 
-Godot Engine 4.x: Download and install from the official website.
+- Prerequisites:
+	Godot Engine 4.x: Download and install from the official website.
  
 **Steps:**
 1. Clone the Repository
@@ -79,41 +78,40 @@ Node Hierarchy:
 	 
 **Usage:**
 1. Running the Simulation
-- Open the project in Godot Engine.
-- Press F5 or click the Play button to run the simulation.
-- The double pendulum will start swinging based on the initial parameters.
- 
+	- Open the project in Godot Engine.
+	- Press F5 or click the Play button to run the simulation.
+	- The double pendulum will start swinging based on the initial parameters. 
 2. Observing the Simulation
-- Adjust your camera to view the pendulum from the side for the best perspective.
-- Watch the pendulum’s motion and observe the chaotic behavior typical of a double pendulum.
- 
+	- Adjust your camera to view the pendulum from the side for the best perspective.
+	- Watch the pendulum’s motion and observe the chaotic behavior typical of a double pendulum.
+	 
 **Customization:**
 You can customize the simulation by modifying the exported variables in pendulum_system.gd.
 
 Pendulum Properties:
 - Rod Lengths
 	- @export var rod_length_1: float = 1.0
-    	- @export var rod_length_2: float = 1.0
- - Masses
+	- @export var rod_length_2: float = 1.0
+- Masses
 	- @export var mass_1: float = 1.0
- 	- @export var mass_2: float = 1.0
+	- @export var mass_2: float = 1.0
 - Gravity
 	- @export var gravity: float = 9.81
 - Damping
 	- @export var damping: float = 0.999
-
+   
 **Initial Conditions:**
 - Initial Angles (in radians)
-	@export var initial_angle_1: float = PI / 4  # 45 degrees
-	@export var initial_angle_2: float = PI / 4
- - Initial Angular Velocities
-	@export var initial_velocity_1: float = 0.0
-	@export var initial_velocity_2: float = 0.0
-Debug Settings
+	- @export var initial_angle_1: float = PI / 4  # 45 degrees
+	- @export var initial_angle_2: float = PI / 4
+- Initial Angular Velocities
+	- @export var initial_velocity_1: float = 0.0
+	- @export var initial_velocity_2: float = 0.0
+**Debug Settings**
 - Enable Debug Mode
-	@export var debug_mode: bool = true
+	- @export var debug_mode: bool = true
 - Pause Simulation on Start
-	@export var pause_simulation: bool = false
+	- @export var pause_simulation: bool = false
 
 **How to Customize:**
 1. Open pendulum_system.gd
@@ -150,17 +148,17 @@ This script is attached to a Node3D and is responsible for setting up the visual
  
 **Example Snippet:**
 func create_rod(rod_node: Node3D, rod_length: float):
-    var rod_mesh_instance = MeshInstance3D.new()
-    rod_node.add_child(rod_mesh_instance)
-    rod_mesh_instance.name = "RodMesh"
+  var rod_mesh_instance = MeshInstance3D.new()
+  rod_node.add_child(rod_mesh_instance)
+  rod_mesh_instance.name = "RodMesh"
+
+  var cylinder = CylinderMesh.new()
+  cylinder.height = rod_length
+  cylinder.top_radius = 0.05
+  cylinder.bottom_radius = 0.05
  
-    var cylinder = CylinderMesh.new()
-    cylinder.height = rod_length
-    cylinder.top_radius = 0.05
-    cylinder.bottom_radius = 0.05
- 
-    rod_mesh_instance.mesh = cylinder
-    rod_mesh_instance.transform.origin.y = -rod_length / 2
+  rod_mesh_instance.mesh = cylinder
+  rod_mesh_instance.transform.origin.y = -rod_length / 2
  
 **pendulum_system.gd**
 This script is attached to the PendulumSystem node and handles the physics simulation.
@@ -172,9 +170,9 @@ This script is attached to the PendulumSystem node and handles the physics simul
 - Updating Positions
 - Applies rotations to the pendulum arms based on calculated angles.
 - User Input Handling
-- Pauses, resumes, or resets the simulation based on user input.
+- Pauses, resumes or resets the simulation based on user input.
  
-Key Functions
+**Key Functions:**
  • _physics_process(delta): Updates the physics simulation at each physics frame.
  • calculate_physics(delta): Performs the physics calculations.
  • update_positions(): Updates the visual positions of the pendulum arms.
@@ -183,36 +181,34 @@ Key Functions
  
 **Example Snippet**
 func _physics_process(delta):
-    if pause_simulation:
-        return
- 
-    calculate_physics(delta)
+ if pause_simulation:
+   return
+ calculate_physics(delta)
     update_positions()
- 
-    if debug_mode:
-        debug_state()
+    
+ if debug_mode:
+   debug_state()
  
 **Troubleshooting** 
-Simulation Not Running
+**Simulation Not Running**
 - Ensure Scripts are Attached
 - Verify that setup_scene.gd is attached to the appropriate node in your scene.
 - Check Node Paths
 - Ensure that the node paths in the scripts match your Scene Tree structure.
  
-Visual Elements Missing
+**Visual Elements Missing**
 - Confirm Node Creation
 - Make sure that create_pendulum() and create_support() are being called.
 - Owner Assignment
 - When adding nodes dynamically, ensure they have the correct owner:
- 
-node.owner = get_tree().edited_scene_root
-Physics Not Updating
+	- node.owner = get_tree().edited_scene_root
+**Physics Not Updating**
 - Check _physics_process(delta)
 - Ensure that this function exists and is correctly implemented in pendulum_system.gd.
 - Verify Physics FPS
 - The default physics tick rate is 60 FPS. Check your project settings under Project > Project Settings > Physics > Common > Physics FPS.
-
-Unexpected Behavior
+- 
+**Unexpected Behavior**
 - Debug Output
 - Enable debug_mode to print out state information.
 - Parameter Values
