@@ -64,7 +64,7 @@ double-pendulum-godot/
 - README.md: This readme file.
  
 Node Hierarchy:
- The node hierarchy is crucial for the correct functioning of the simulation.
+ - The node hierarchy is crucial for the correct functioning of the simulation.
  
 	PendulumSystem (Node3D)
 	├── Pivot (Node3D)
@@ -86,7 +86,7 @@ Node Hierarchy:
 	- Watch the pendulum’s motion and observe the chaotic behavior typical of a double pendulum.
 	 
 **Customization:**
- You can customize the simulation by modifying the exported variables in pendulum_system.gd.
+ - You can customize the simulation by modifying the exported variables in pendulum_system.gd.
 
 Pendulum Properties:
 - Rod Lengths
@@ -129,7 +129,7 @@ Pendulum Properties:
  
 **Scripts Overview:**
 - **setup_scene.gd**
-   This script is attached to a Node3D and is responsible for setting up the visual components of the pendulum system.
+   - This script is attached to a Node3D and is responsible for setting up the visual components of the pendulum system.
  
 **Responsibilities:**
 - Creating Visual Elements
