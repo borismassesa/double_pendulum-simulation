@@ -35,15 +35,15 @@ Prerequisites:
 Godot Engine 4.x: Download and install from the official website.
  
 Steps:
-     1. Clone the Repository
-	git clone https://github.com/yourusername/double-pendulum-godot.git
-     2.	Open the Project in Godot
-	• Launch Godot Engine.
+1. Clone the Repository
+   git clone https://github.com/yourusername/double-pendulum-godot.git
+2. Open the Project in Godot
+   	• Launch Godot Engine.
 	• Click on “Import”.
 	• Navigate to the cloned repository folder.
 	• Select the project.godot file.
 	• Click “Import & Edit”.
-     3. Run the Project
+4. Run the Project
 	• Press the Play button or press F5 to start the simulation.
  
 
