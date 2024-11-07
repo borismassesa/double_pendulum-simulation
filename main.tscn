@@ -8,6 +8,7 @@
 [node name="Main" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.99502)
 script = ExtResource("1_wdc7y")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]

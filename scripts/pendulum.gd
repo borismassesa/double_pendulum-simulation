@@ -1,6 +1,6 @@
 extends Node3D
 
-@onready var massOne = $"/root/Main/PendulumSystem/Pivot/Arm/Mass1"
+@onready var massOne = $"/root/Main/PendulumSystem/Pivot/Arm1/Mass1"
 # Constants for physics calculations
 const GRAVITY: float = 9.8    # Gravity constant
 const DAMPING: float = 0.999  # Damping factor to simulate air resistance
@@ -9,7 +9,7 @@ const DAMPING: float = 0.999  # Damping factor to simulate air resistance
 # Properties for first pendulum arm
 var angle1: float = PI/4           # Initial angle (45 degrees)
 var angular_velocity1: float = 0.0 # Starting angular velocity
-var length1: float = 2.0          # Length of first arm
+var length1: float = 5.0          # Length of first arm
 var mass1: float = 1.0            # Mass of first bob
 
 # Properties for second pendulum arm
@@ -36,8 +36,9 @@ func _calculate_angles(delta: float):
 	# This is where we'll add the mathematical calculations later
 	
 	var angular_acceleration = -(GRAVITY/length1) * sin(angle1)
-	angular_velocity1 = angular_acceleration * delta
+	angular_velocity1 = angular_velocity1 + angular_acceleration * delta * 25
 	angle1 += angular_velocity1 * delta
+	print(angle1)
 	
 	pass
 
@@ -47,5 +48,5 @@ func _update_pendulum_positions():
 	# This will transform our calculated angles into 3D positions
 	var x = length1 * sin(angle1)
 	var y = -length1 * cos(angle1)
-	#massOne.transform.origin = Vector3(x,y,0)
+	massOne.transform.origin = Vector3(x,y,0)
 	pass
