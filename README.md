@@ -139,10 +139,10 @@ Pendulum Properties:
 - The support is positioned above the pivot point.
  
 **Key Functions:**
-	- create_pendulum(): Initializes the pendulum arms and masses.
-	- create_rod(rod_node, rod_length): Creates a rod mesh and attaches it to the specified node.
-	- create_mass(parent_rod, rod_length, mass_name): Creates a mass mesh and attaches it to the end of a rod.
-	- create_support(): Creates the support structure at the top of the pendulum.
+- create_pendulum(): Initializes the pendulum arms and masses.
+- create_rod(rod_node, rod_length): Creates a rod mesh and attaches it to the specified node.
+- create_mass(parent_rod, rod_length, mass_name): Creates a mass mesh and attaches it to the end of a rod.
+- create_support(): Creates the support structure at the top of the pendulum.
  
 **Example Snippet:**
 		 func create_rod(rod_node: Node3D, rod_length: float):
