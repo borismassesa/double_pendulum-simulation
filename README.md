@@ -1,58 +1,55 @@
 # Double Pendulum Simulation in Godot Engine
  
 Overview
- 
-This project is a simulation of a double pendulum using the Godot Engine (version 4). It demonstrates the complex, chaotic motion of a double pendulum system in a 3D environment. The simulation uses GDScript to model both the physics and visual representation of the pendulum.
+This project is a simulation of a double pendulum using the Godot Engine (version 4). It demonstrates the complex, chaotic .
+motion of a double pendulum system in a 3D environment. The simulation uses GDScript to model both the physics and visual
+representation of the pendulum.
  
 (Include a screenshot of your simulation here)
  
 Features
  
-	•	Accurate Physics Simulation: Implements the equations of motion for a double pendulum to simulate realistic behavior.
-	•	Real-Time Updates: Uses the _physics_process(delta) method to update the simulation 60 times per second.
-	•	Hierarchical Node Structure: Utilizes a node hierarchy to correctly apply transformations and rotations.
-	•	Customizable Parameters: Easily adjust rod lengths, masses, initial angles, gravity, and damping factors.
-	•	Visual Elements: Includes visual representations of rods, masses, and a support structure.
-	•	Debug Mode: Optional debug outputs to monitor the simulation state.
-	•	User Controls: Pause, resume, and reset the simulation using keyboard inputs.
+	• Accurate Physics Simulation: Implements the equations of motion for a double pendulum to simulate realistic 		  behavior.
+	• Real-Time Updates: Uses the _physics_process(delta) method to update the simulation 60 times per second.
+	• Hierarchical Node Structure: Utilizes a node hierarchy to correctly apply transformations and rotations.
+	• Customizable Parameters: Easily adjust rod lengths, masses, initial angles, gravity, and damping factors.
+	• Visual Elements: Includes visual representations of rods, masses, and a support structure.
+	• Debug Mode: Optional debug outputs to monitor the simulation state.
+	• User Controls: Pause, resume, and reset the simulation using keyboard inputs.
  
 Table of Contents
- 
-	•	Installation
-	•	Project Structure
-	•	Usage
-	•	Customization
-	•	Controls
-	•	Scripts Overview
-	•	setup_scene.gd
-	•	pendulum_system.gd
-	•	Troubleshooting
-	•	License
- 
+
+	• Installation
+	• Project Structure
+	• Usage
+	• Customization
+	• Controls
+	• Scripts Overview
+	• setup_scene.gd
+	• pendulum_system.gd
+	• Troubleshooting
+	• License
+
 Installation
  
-Prerequisites
+Prerequisites:
  
-	•	Godot Engine 4.x: Download and install from the official website.
+Godot Engine 4.x: Download and install from the official website.
  
-Steps
+Steps:
+     1. Clone the Repository
+	git clone https://github.com/yourusername/double-pendulum-godot.git
+     2.	Open the Project in Godot
+	• Launch Godot Engine.
+	• Click on “Import”.
+	• Navigate to the cloned repository folder.
+	• Select the project.godot file.
+	• Click “Import & Edit”.
+     3. Run the Project
+	• Press the Play button or press F5 to start the simulation.
  
-	1.	Clone the Repository
- 
-git clone https://github.com/yourusername/double-pendulum-godot.git
- 
- 
-	2.	Open the Project in Godot
-	•	Launch Godot Engine.
-	•	Click on “Import”.
-	•	Navigate to the cloned repository folder.
-	•	Select the project.godot file.
-	•	Click “Import & Edit”.
-	3.	Run the Project
-	•	Press the Play button or press F5 to start the simulation.
- 
-Project Structure
- 
+
+Project Structure  
 double-pendulum-godot/
 ├── assets/
 │   └── double_pendulum_screenshot.png
@@ -65,11 +62,11 @@ double-pendulum-godot/
 ├── project.godot
 └── README.md
  
-	•	assets/: Contains images and other assets.
-	•	scenes/: Godot scene files.
-	•	scripts/: GDScript files.
-	•	project.godot: Godot project file.
-	•	README.md: This readme file.
+	• assets/: Contains images and other assets.
+	• scenes/: Godot scene files.
+	• scripts/: GDScript files.
+	• project.godot: Godot project file.
+	• README.md: This readme file.
  
 Node Hierarchy
  
