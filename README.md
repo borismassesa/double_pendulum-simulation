@@ -218,5 +218,5 @@ Unexpected Behavior
 - Parameter Values
 - Verify that masses, lengths, and initial angles are within reasonable ranges.
  
-**License**
+**License:**
 This project is licensed under the MIT License. See the LICENSE file for details.
