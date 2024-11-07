@@ -1,9 +1,7 @@
 # Double Pendulum Simulation in Godot Engine
  
 **Overview**
-This project is a simulation of a double pendulum using the Godot Engine (version 4). It demonstrates the complex, chaotic .
-motion of a double pendulum system in a 3D environment. The simulation uses GDScript to model both the physics and visual
-representation of the pendulum.
+- This project is a simulation of a double pendulum using the Godot Engine (version 4). It demonstrates the complex, chaotic. Motion of a double pendulum system in a 3D environment. The simulation uses GDScript to model both the physics and visual representation of the pendulum.
  
 (Include a screenshot of your simulation here)
  
@@ -141,24 +139,24 @@ Pendulum Properties:
 - The support is positioned above the pivot point.
  
 **Key Functions:**
-- create_pendulum(): Initializes the pendulum arms and masses.
-- create_rod(rod_node, rod_length): Creates a rod mesh and attaches it to the specified node.
-- create_mass(parent_rod, rod_length, mass_name): Creates a mass mesh and attaches it to the end of a rod.
-- create_support(): Creates the support structure at the top of the pendulum.
+	- create_pendulum(): Initializes the pendulum arms and masses.
+	- create_rod(rod_node, rod_length): Creates a rod mesh and attaches it to the specified node.
+	- create_mass(parent_rod, rod_length, mass_name): Creates a mass mesh and attaches it to the end of a rod.
+	- create_support(): Creates the support structure at the top of the pendulum.
  
 **Example Snippet:**
-	 func create_rod(rod_node: Node3D, rod_length: float):
-	  var rod_mesh_instance = MeshInstance3D.new()
-	  rod_node.add_child(rod_mesh_instance)
-	  rod_mesh_instance.name = "RodMesh"
-
-	  var cylinder = CylinderMesh.new()
-	  cylinder.height = rod_length
-	  cylinder.top_radius = 0.05
-	  cylinder.bottom_radius = 0.05
-	 
-	  rod_mesh_instance.mesh = cylinder
-	  rod_mesh_instance.transform.origin.y = -rod_length / 2
+		 func create_rod(rod_node: Node3D, rod_length: float):
+		  var rod_mesh_instance = MeshInstance3D.new()
+		  rod_node.add_child(rod_mesh_instance)
+		  rod_mesh_instance.name = "RodMesh"
+	
+		  var cylinder = CylinderMesh.new()
+		  cylinder.height = rod_length
+		  cylinder.top_radius = 0.05
+		  cylinder.bottom_radius = 0.05
+		 
+		  rod_mesh_instance.mesh = cylinder
+		  rod_mesh_instance.transform.origin.y = -rod_length / 2
  
 **pendulum_system.gd**
 - This script is attached to the PendulumSystem node and handles the physics simulation.
@@ -173,22 +171,22 @@ Pendulum Properties:
 - Pauses, resumes or resets the simulation based on user input.
  
 **Key Functions:**
- • _physics_process(delta): Updates the physics simulation at each physics frame.
- • calculate_physics(delta): Performs the physics calculations.
- • update_positions(): Updates the visual positions of the pendulum arms.
- • _input(event): Handles user input for pausing and resetting.
- • reset_simulation(): Resets the simulation to initial conditions.
+- _physics_process(delta): Updates the physics simulation at each physics frame.
+- calculate_physics(delta): Performs the physics calculations.
+- update_positions(): Updates the visual positions of the pendulum arms.
+- _input(event): Handles user input for pausing and resetting.
+- reset_simulation(): Resets the simulation to initial conditions.
  
  **Example Snippet**
-	 func _physics_process(delta):
-	  if pause_simulation:
-	    return
-	   calculate_physics(delta)
-	     update_positions()
-	    
-	  if debug_mode:
-	    debug_state()
- 
+			 func _physics_process(delta):
+			  if pause_simulation:
+			    return
+			   calculate_physics(delta)
+			     update_positions()
+			    
+			  if debug_mode:
+			    debug_state()
+		 
 **Troubleshooting**  
 **Simulation Not Running**
 - Ensure Scripts are Attached
