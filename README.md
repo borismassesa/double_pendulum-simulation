@@ -8,27 +8,25 @@ representation of the pendulum.
 (Include a screenshot of your simulation here)
  
 Features
- 
-	• Accurate Physics Simulation: Implements the equations of motion for a double pendulum to simulate realistic 		  behavior.
-	• Real-Time Updates: Uses the _physics_process(delta) method to update the simulation 60 times per second.
-	• Hierarchical Node Structure: Utilizes a node hierarchy to correctly apply transformations and rotations.
-	• Customizable Parameters: Easily adjust rod lengths, masses, initial angles, gravity, and damping factors.
-	• Visual Elements: Includes visual representations of rods, masses, and a support structure.
-	• Debug Mode: Optional debug outputs to monitor the simulation state.
-	• User Controls: Pause, resume, and reset the simulation using keyboard inputs.
+- Accurate Physics Simulation: Implements the equations of motion for a double pendulum to simulate realistic behavior.
+- Real-Time Updates: Uses the _physics_process(delta) method to update the simulation 60 times per second.
+- Hierarchical Node Structure: Utilizes a node hierarchy to correctly apply transformations and rotations.
+- Customizable Parameters: Easily adjust rod lengths, masses, initial angles, gravity, and damping factors.
+- Visual Elements: Includes visual representations of rods, masses, and a support structure.
+- Debug Mode: Optional debug outputs to monitor the simulation state.
+- User Controls: Pause, resume, and reset the simulation using keyboard inputs.
  
 Table of Contents
-
-	• Installation
-	• Project Structure
-	• Usage
-	• Customization
-	• Controls
-	• Scripts Overview
-	• setup_scene.gd
-	• pendulum_system.gd
-	• Troubleshooting
-	• License
+1. Installation
+2. Project Structure
+3. Usage
+4. Customization
+5. Controls
+6. Scripts Overview
+7. setup_scene.gd
+8. pendulum_system.gd
+9. Troubleshooting
+10. License
 
 Installation
  
