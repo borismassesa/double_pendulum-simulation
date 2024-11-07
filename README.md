@@ -44,17 +44,17 @@
    - Press the Play button or press F5 to start the simulation.
  
 **Project Structure:**
-			double-pendulum-godot/
-				├── assets/
-				│   └── double_pendulum_screenshot.png
-				├── scenes/
-				│   ├── Main.tscn
-				│   └── PendulumSystem.tscn
-				├── scripts/
-				│   ├── setup_scene.gd
-				│   └── pendulum_system.gd
-				├── project.godot
-				└── README.md
+				double-pendulum-godot/
+					├── assets/
+					│   └── double_pendulum_screenshot.png
+					├── scenes/
+					│   ├── Main.tscn
+					│   └── PendulumSystem.tscn
+					├── scripts/
+					│   ├── setup_scene.gd
+					│   └── pendulum_system.gd
+					├── project.godot
+					└── README.md
 			 
 - assets/: Contains images and other assets.scenes/:
 - Godot scene files.
@@ -145,19 +145,19 @@ Pendulum Properties:
 - create_support(): Creates the support structure at the top of the pendulum.
  
 **Example Snippet:**
-			 func create_rod(rod_node: Node3D, rod_length: float):
-			  var rod_mesh_instance = MeshInstance3D.new()
-			  rod_node.add_child(rod_mesh_instance)
-			  rod_mesh_instance.name = "RodMesh"
-		
-			  var cylinder = CylinderMesh.new()
-			  cylinder.height = rod_length
-			  cylinder.top_radius = 0.05
-			  cylinder.bottom_radius = 0.05
-			 
-			  rod_mesh_instance.mesh = cylinder
-			  rod_mesh_instance.transform.origin.y = -rod_length / 2
- 
+				  func create_rod(rod_node: Node3D, rod_length: float):
+				  var rod_mesh_instance = MeshInstance3D.new()
+				  rod_node.add_child(rod_mesh_instance)
+				  rod_mesh_instance.name = "RodMesh"
+			
+				  var cylinder = CylinderMesh.new()
+				  cylinder.height = rod_length
+				  cylinder.top_radius = 0.05
+				  cylinder.bottom_radius = 0.05
+				 
+				  rod_mesh_instance.mesh = cylinder
+				  rod_mesh_instance.transform.origin.y = -rod_length / 2
+	 
 **pendulum_system.gd**
 - This script is attached to the PendulumSystem node and handles the physics simulation.
 	 
