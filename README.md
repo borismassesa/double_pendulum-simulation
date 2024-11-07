@@ -31,7 +31,7 @@ representation of the pendulum.
 
 **Installation**
 - Prerequisites:
-	Godot Engine 4.x: Download and install from the official website.
+  Godot Engine 4.x: Download and install from the official website.
  
 **Steps:**
 1. Clone the Repository
@@ -86,7 +86,7 @@ Node Hierarchy:
 	- Watch the pendulum’s motion and observe the chaotic behavior typical of a double pendulum.
 	 
 **Customization:**
-You can customize the simulation by modifying the exported variables in pendulum_system.gd.
+ You can customize the simulation by modifying the exported variables in pendulum_system.gd.
 
 Pendulum Properties:
 - Rod Lengths
@@ -128,8 +128,8 @@ Pendulum Properties:
 - Press the Enter key to reset the simulation to its initial conditions.
  
 **Scripts Overview:**
-**setup_scene.gd** 
-This script is attached to a Node3D and is responsible for setting up the visual components of the pendulum system.
+ **setup_scene.gd** 
+  This script is attached to a Node3D and is responsible for setting up the visual components of the pendulum system.
  
 **Responsibilities:**
 - Creating Visual Elements
@@ -147,7 +147,7 @@ This script is attached to a Node3D and is responsible for setting up the visual
 - create_support(): Creates the support structure at the top of the pendulum.
  
 **Example Snippet:**
-func create_rod(rod_node: Node3D, rod_length: float):
+ func create_rod(rod_node: Node3D, rod_length: float):
   var rod_mesh_instance = MeshInstance3D.new()
   rod_node.add_child(rod_mesh_instance)
   rod_mesh_instance.name = "RodMesh"
@@ -161,7 +161,7 @@ func create_rod(rod_node: Node3D, rod_length: float):
   rod_mesh_instance.transform.origin.y = -rod_length / 2
  
 **pendulum_system.gd**
-This script is attached to the PendulumSystem node and handles the physics simulation.
+  This script is attached to the PendulumSystem node and handles the physics simulation.
  
 **Responsibilities**
 - Physics Calculation
@@ -179,17 +179,17 @@ This script is attached to the PendulumSystem node and handles the physics simul
  • _input(event): Handles user input for pausing and resetting.
  • reset_simulation(): Resets the simulation to initial conditions.
  
-**Example Snippet**
-func _physics_process(delta):
- if pause_simulation:
-   return
- calculate_physics(delta)
-    update_positions()
+ **Example Snippet**
+ func _physics_process(delta):
+  if pause_simulation:
+    return
+   calculate_physics(delta)
+     update_positions()
     
- if debug_mode:
-   debug_state()
+  if debug_mode:
+    debug_state()
  
-**Troubleshooting** 
+**Troubleshooting**  
 **Simulation Not Running**
 - Ensure Scripts are Attached
 - Verify that setup_scene.gd is attached to the appropriate node in your scene.
