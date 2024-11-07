@@ -1,20 +1,74 @@
-[gd_scene load_steps=2 format=3 uid="uid://duk17w30gdwon"]
+[gd_scene load_steps=4 format=3 uid="uid://duk17w30gdwon"]
 
-[ext_resource type="Script" path="res://scripts/camera.gd" id="1_wdc7y"]
+[ext_resource type="Script" path="res://scripts/setup_scene.gd" id="1_44p2p"]
+[ext_resource type="Script" path="res://scripts/pendulum_system.gd" id="2_nmep2"]
+
+[sub_resource type="GDScript" id="GDScript_lcwiy"]
+script/source = "extends Camera3D
+
+# Camera control properties
+var camera_speed: float = 0.1      # Speed of camera movement
+var zoom_speed: float = 0.1        # Speed of zoom
+var rotation_speed: float = 0.01   # Speed of rotation
+
+# Camera state variables
+var dragging: bool = false         # Is the right mouse button being held?
+var last_mouse_pos: Vector2        # Last recorded mouse position
+
+# Called when the node enters the scene tree
+func _ready():
+	# Set initial camera position and orientation
+	position = Vector3(0, 2, 10)   # Place camera above and behind the pendulum
+	look_at(Vector3.ZERO)          # Look at the center point
+
+# Handle input events for camera control
+func _unhandled_input(event):
+	# Handle mouse button events
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_RIGHT:
+			# Right mouse button controls rotation
+			dragging = event.pressed
+			last_mouse_pos = event.position
+		elif event.button_index == MOUSE_BUTTON_WHEEL_UP:
+			# Mouse wheel up zooms in
+			position += transform.basis.z * zoom_speed
+		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+			# Mouse wheel down zooms out
+			position -= transform.basis.z * zoom_speed
+			
+	# Handle mouse motion for camera rotation
+	elif event is InputEventMouseMotion and dragging:
+		var delta = event.position - last_mouse_pos
+		rotation.y -= delta.x * rotation_speed  # Rotate around Y axis
+		rotation.x -= delta.y * rotation_speed  # Rotate around X axis
+		rotation.x = clamp(rotation.x, -PI/2, PI/2)  # Limit vertical rotation
+		last_mouse_pos = event.position
+"
 
 [node name="Main" type="Node3D"]
+script = ExtResource("1_44p2p")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-script = ExtResource("1_wdc7y")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+script = SubResource("GDScript_lcwiy")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, -0.5, 0.5, 0, 0, 0)
+light_energy = 1.5
 
 [node name="PendulumSystem" type="Node3D" parent="."]
+script = ExtResource("2_nmep2")
 
 [node name="Pivot" type="Node3D" parent="PendulumSystem"]
 
-[node name="Arm1" type="Node3D" parent="PendulumSystem/Pivot"]
+[node name="Arm1" type="MeshInstance3D" parent="PendulumSystem/Pivot"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0.001, 1, 0)
 
-[node name="Arm2" type="Node3D" parent="PendulumSystem/Pivot"]
+[node name="Mass1" type="MeshInstance3D" parent="PendulumSystem/Pivot/Arm1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0)
+
+[node name="Arm2" type="MeshInstance3D" parent="PendulumSystem/Pivot/Arm1"]
+
+[node name="Mass2" type="MeshInstance3D" parent="PendulumSystem/Pivot/Arm1/Arm2"]
 
 [node name="Debug" type="Node3D" parent="PendulumSystem"]
