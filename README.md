@@ -128,8 +128,8 @@ Pendulum Properties:
 - Press the Enter key to reset the simulation to its initial conditions.
  
 **Scripts Overview:**
- **setup_scene.gd** 
-  This script is attached to a Node3D and is responsible for setting up the visual components of the pendulum system.
+- **setup_scene.gd**
+   This script is attached to a Node3D and is responsible for setting up the visual components of the pendulum system.
  
 **Responsibilities:**
 - Creating Visual Elements
@@ -147,22 +147,22 @@ Pendulum Properties:
 - create_support(): Creates the support structure at the top of the pendulum.
  
 **Example Snippet:**
- func create_rod(rod_node: Node3D, rod_length: float):
-  var rod_mesh_instance = MeshInstance3D.new()
-  rod_node.add_child(rod_mesh_instance)
-  rod_mesh_instance.name = "RodMesh"
+	 func create_rod(rod_node: Node3D, rod_length: float):
+	  var rod_mesh_instance = MeshInstance3D.new()
+	  rod_node.add_child(rod_mesh_instance)
+	  rod_mesh_instance.name = "RodMesh"
 
-  var cylinder = CylinderMesh.new()
-  cylinder.height = rod_length
-  cylinder.top_radius = 0.05
-  cylinder.bottom_radius = 0.05
- 
-  rod_mesh_instance.mesh = cylinder
-  rod_mesh_instance.transform.origin.y = -rod_length / 2
+	  var cylinder = CylinderMesh.new()
+	  cylinder.height = rod_length
+	  cylinder.top_radius = 0.05
+	  cylinder.bottom_radius = 0.05
+	 
+	  rod_mesh_instance.mesh = cylinder
+	  rod_mesh_instance.transform.origin.y = -rod_length / 2
  
 **pendulum_system.gd**
-  This script is attached to the PendulumSystem node and handles the physics simulation.
- 
+- This script is attached to the PendulumSystem node and handles the physics simulation.
+	 
 **Responsibilities**
 - Physics Calculation
 - Computes angular accelerations, velocities, and positions.
@@ -180,14 +180,14 @@ Pendulum Properties:
  • reset_simulation(): Resets the simulation to initial conditions.
  
  **Example Snippet**
- func _physics_process(delta):
-  if pause_simulation:
-    return
-   calculate_physics(delta)
-     update_positions()
-    
-  if debug_mode:
-    debug_state()
+	 func _physics_process(delta):
+	  if pause_simulation:
+	    return
+	   calculate_physics(delta)
+	     update_positions()
+	    
+	  if debug_mode:
+	    debug_state()
  
 **Troubleshooting**  
 **Simulation Not Running**
@@ -207,7 +207,7 @@ Pendulum Properties:
 - Ensure that this function exists and is correctly implemented in pendulum_system.gd.
 - Verify Physics FPS
 - The default physics tick rate is 60 FPS. Check your project settings under Project > Project Settings > Physics > Common > Physics FPS.
-- 
+
 **Unexpected Behavior**
 - Debug Output
 - Enable debug_mode to print out state information.
