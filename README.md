@@ -2,8 +2,7 @@
  
 **Overview**
 - This project is a simulation of a double pendulum using the Godot Engine (version 4). It demonstrates the complex, chaotic. Motion of a double pendulum system in a 3D environment. The simulation uses GDScript to model both the physics and visual representation of the pendulum.
- 
-![image](https://github.com/user-attachments/assets/c0c6c256-af02-4137-863c-cfa098d452d3)
+
 
 **Features**
 - Accurate Physics Simulation: Implements the equations of motion for a double pendulum to simulate realistic behavior.
@@ -69,10 +68,8 @@ Node Hierarchy:
 				├── Pivot (Node3D)
 				│   ├── Support (MeshInstance3D)
 				│   └── Arm1 (Node3D)
-				│       ├── RodMesh (MeshInstance3D)
 				│       ├── Mass1 (MeshInstance3D)
 				│       └── Arm2 (Node3D)
-				│           ├── RodMesh (MeshInstance3D)
 				│           └── Mass2 (MeshInstance3D)
 				 
 **Usage:**
