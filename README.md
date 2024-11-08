@@ -34,10 +34,10 @@
    git clone https://github.com/yourusername/double-pendulum-godot.git
 2. Open the Project in Godot
    - Launch Godot Engine.
-   - Click on “Import”.
+   - Click on "Import".
    - Navigate to the cloned repository folder.
    - Select the project.godot file.
-   - Click “Import & Edit”.
+   - Click "Import & Edit".
 3. Run the Project
    - Press the Play button or press F5 to start the simulation.
  
@@ -79,7 +79,7 @@ Node Hierarchy:
 	- The double pendulum will start swinging based on the initial parameters. 
 2. Observing the Simulation
 	- Adjust your camera to view the pendulum from the side for the best perspective.
-	- Watch the pendulum’s motion and observe the chaotic behavior typical of a double pendulum.
+	- Watch the pendulum's motion and observe the chaotic behavior typical of a double pendulum.
 	 
 **Customization:**
  - You can customize the simulation by modifying the exported variables in pendulum_system.gd.
@@ -113,7 +113,7 @@ Pendulum Properties:
 1. Open pendulum_system.gd
    - Navigate to scripts/pendulum_system.gd in the Godot Editor.
 2. Modify Exported Variables
-   - Adjust the variables under the “Pendulum Properties” and “Initial Conditions” export groups.
+   - Adjust the variables under the "Pendulum Properties" and "Initial Conditions" export groups.
 3. Save and Run
    - Save your changes and run the project to see the effects.
  
@@ -186,29 +186,113 @@ Pendulum Properties:
 			  if debug_mode:
 			    debug_state()
 		 
-**Troubleshooting**  
-**Simulation Not Running**
-- Ensure Scripts are Attached
-- Verify that setup_scene.gd is attached to the appropriate node in your scene.
-- Check Node Paths
-- Ensure that the node paths in the scripts match your Scene Tree structure.
- 
-**Visual Elements Missing**
-- Confirm Node Creation
-- Make sure that create_pendulum() and create_support() are being called.
-- Owner Assignment
-- When adding nodes dynamically, ensure they have the correct owner:
-	- node.owner = get_tree().edited_scene_root
+# Troubleshooting and Debugging Guide
 
- 
-**Physics Not Updating**
-- Check _physics_process(delta)
-- Ensure that this function exists and is correctly implemented in pendulum_system.gd.
-- Verify Physics FPS
-- The default physics tick rate is 60 FPS. Check your project settings under Project > Project Settings > Physics > Common > Physics FPS.
+This section outlines common problems encountered during the development of the double pendulum simulation, their causes, and applied solutions.
 
-**Unexpected Behavior**
-- Debug Output
-- Enable debug_mode to print out state information.
-- Parameter Values
-- Verify that masses, lengths, and initial angles are within reasonable ranges.
+## 1. Simulation Not Updating at 60 FPS
+
+### Problem
+The pendulum simulation was not updating as expected; the motion was either non-existent or incorrect.
+
+### Cause
+The `_physics_process(delta)` method was missing from the `pendulum_system.gd` script. This method is essential for updating the simulation at the default physics tick rate of 60 times per second.
+
+### Effects
+- The pendulum does not move when the simulation runs
+- The motion is erratic or not in real-time
+- Continuous updates to the pendulum's state are absent
+
+### Solution
+Added the `_physics_process(delta)` Method:
+
+```gdscript
+func _physics_process(delta):
+    if pause_simulation:
+        return
+
+    calculate_physics(delta)
+    update_positions()
+
+    if debug_mode:
+        debug_state()
+```
+
+### Debugging Steps
+1. Verified that `_physics_process(delta)` was not present
+2. Added the method and observed that the simulation began updating correctly
+3. Confirmed the update rate by printing the physics frames or using the debugger
+
+## 2. Incorrect Node Hierarchy Affecting Transformations
+
+### Problem
+The pendulum arms were not rotating or moving correctly because the node hierarchy did not reflect the necessary parent-child relationships.
+
+### Cause
+The node hierarchy was not correctly established, so transformations and rotations did not propagate as expected.
+
+### Effects
+- Arm2 does not follow the movement of Arm1
+- Rotations and transformations do not propagate correctly
+- Visual discrepancies in the pendulum's motion
+
+### Solution
+#### Ensured Correct Hierarchy:
+```gdscript
+func create_pendulum():
+    # Create Arm1
+    arm1 = Node3D.new()
+    arm1.name = "Arm1"
+    pivot.add_child(arm1)
+    arm1.position = Vector3.ZERO
+
+    # Create Arm2
+    arm2 = Node3D.new()
+    arm2.name = "Arm2"
+    arm1.add_child(arm2)
+    arm2.position = Vector3(0, -rod_length_1, 0)  # Position at end of Arm1
+
+    # Create the rods and masses
+    create_rod(arm1, rod_length_1)
+    create_rod(arm2, rod_length_2)
+    create_mass(arm1, rod_length_1, "Mass1")
+    create_mass(arm2, rod_length_2, "Mass2")
+```
+
+## 3. Git Conflicts When Pushing Changes
+
+### Problem
+Errors occurred when pushing local commits to the remote repository due to divergent branches.
+
+### Cause
+The local and remote main branches had diverged; the remote branch contained commits that were not in the local branch.
+
+### Solution
+1. Merged Remote Changes into Local Branch:
+```bash
+git pull origin main --no-rebase
+```
+2. Resolved any merge conflicts that arose
+3. Pushed Local Changes:
+```bash
+git pull origin main
+```
+
+## 4. Nodes Not Referenced Correctly
+
+### Problem
+Errors occurred due to nodes not being found or referenced correctly in the scripts.
+
+### Solution
+Updated node references to use correct paths:
+
+```gdscript
+@onready var mass1 = $Pivot/Arm1/Mass1
+```
+
+### Debugging Steps
+1. Check scene tree for correct node names and hierarchy
+2. Use print statements to verify node references
+3. Update node paths in scripts accordingly
+
+---
