@@ -24,7 +24,6 @@
 7. setup_scene.gd
 8. pendulum_system.gd
 9. Troubleshooting
-10. License
 
 
 **Installation**
