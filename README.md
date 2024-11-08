@@ -216,7 +216,3 @@ Pendulum Properties:
 - Enable debug_mode to print out state information.
 - Parameter Values
 - Verify that masses, lengths, and initial angles are within reasonable ranges.
- 
-**License:**
-
-This project is licensed under the MIT License. See the LICENSE file for details.
