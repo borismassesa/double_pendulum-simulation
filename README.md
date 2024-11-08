@@ -297,4 +297,89 @@ Updated node references to use correct paths:
 2. Use print statements to verify node references
 3. Update node paths in scripts accordingly
 
+# Assertions and Error Handling
+
+To enhance the reliability and robustness of our double pendulum simulation, we have implemented strategic assert function calls within the GDScript code. These assertions serve as internal checks to verify that certain conditions hold true at specific points in the code.
+
+## Purpose of Assertions
+
+- **Early Error Detection**: Catch potential issues during development rather than at runtime
+- **Documentation**: Clearly indicate the assumptions and invariants within the code
+- **Debugging Aid**: Help identify incorrect states and make debugging easier
+
+## Implementation Details
+
+### 1. Verifying Node Initialization
+
+We ensure that all essential nodes are correctly initialized and not null to prevent null reference errors during execution.
+
+```gdscript
+func _ready():
+    # Assert that critical nodes are not null
+    assert(pivot != null, "Pivot node is not initialized.")
+    assert(arm1 != null, "Arm1 node is not initialized.")
+    assert(arm2 != null, "Arm2 node is not initialized.")
+    assert(mass1 != null, "Mass1 node is not initialized.")
+    assert(mass2 != null, "Mass2 node is not initialized.")
+```
+
+### 2. Validating Input Parameters
+
+We validate that exported variables and input parameters have acceptable values:
+
+```gdscript
+func _ready():
+    # Assert that rod lengths are positive
+    assert(rod_length_1 > 0, "rod_length_1 must be greater than zero.")
+    assert(rod_length_2 > 0, "rod_length_2 must be greater than zero.")
+
+    # Assert that masses are positive
+    assert(mass_1 > 0, "mass_1 must be greater than zero.")
+    assert(mass_2 > 0, "mass_2 must be greater than zero.")
+```
+
+### 3. Preventing Division by Zero in Physics Calculations
+
+```gdscript
+func calculate_physics(delta):
+    # Calculate denominators
+    var den1 = l1 * (2.0 * m1 + m2 - m2 * cos(2.0 * (theta1 - theta2)))
+    var den2 = l2 * (2.0 * m1 + m2 - m2 * cos(2.0 * (theta1 - theta2)))
+
+    # Assert that denominators are not zero
+    assert(abs(den1) > 0.000001, "Denominator den1 is too close to zero.")
+    assert(abs(den2) > 0.000001, "Denominator den2 is too close to zero.")
+```
+
+## Testing the Assertions
+
+1. **Trigger an Assertion Failure**:
+   - Set an invalid value (e.g., `rod_length_1 = 0`)
+   - Run the simulation
+   
+2. **Observe the Error Message**:
+   - Simulation halts with clear error message
+   - Example: "Assertion failed: rod_length_1 must be greater than zero."
+   
+3. **Correct the Value**:
+   - Restore valid value
+   - Verify simulation runs without errors
+
+## Benefits of Using Assertions
+
+- **Improved Reliability**: Validation of critical conditions reduces runtime errors
+- **Easier Debugging**: Clear and immediate feedback when assumptions are violated
+- **Code Documentation**: Serves as executable documentation of code requirements
+
+## Important Considerations
+
+### Development vs. Production
+- Assertions are active in debug builds
+- Ignored in release builds
+- No performance impact in final product
+
+### Appropriate Usage
+- Assertions catch programming errors, not user input errors
+- User input validation should be handled separately with proper error handling
+
 ---
