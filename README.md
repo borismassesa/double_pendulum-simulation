@@ -25,6 +25,7 @@ https://github.com/user-attachments/assets/e98fc45c-3c76-4549-be5b-7af3167424c9
 7. setup_scene.gd
 8. pendulum_system.gd
 9. Troubleshooting
+10. Assertins and Error Handling
 
 
 **Installation**
