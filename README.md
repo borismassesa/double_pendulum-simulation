@@ -44,6 +44,7 @@
    - Press the Play button or press F5 to start the simulation.
  
 **Project Structure:**
+
 					double-pendulum-godot/
 					├── assets/
 					│   └── double_pendulum_screenshot.png
@@ -62,6 +63,7 @@
 - README.md: This readme file.
  
 Node Hierarchy:
+
  - The node hierarchy is crucial for the correct functioning of the simulation.
  
 				PendulumSystem (Node3D)
@@ -145,6 +147,7 @@ Pendulum Properties:
 - create_support(): Creates the support structure at the top of the pendulum.
  
 **Example Snippet:**
+
 			func create_rod(rod_node: Node3D, rod_length: float):
 			var rod_mesh_instance = MeshInstance3D.new()
 			rod_node.add_child(rod_mesh_instance)
@@ -157,6 +160,7 @@ Pendulum Properties:
 			rod_mesh_instance.transform.origin.y = -rod_length / 2
 	 
 **pendulum_system.gd**
+
 - This script is attached to the PendulumSystem node and handles the physics simulation.
 	 
 **Responsibilities**
@@ -176,7 +180,8 @@ Pendulum Properties:
 - reset_simulation(): Resets the simulation to initial conditions.
  
  **Example Snippet**
-			 func _physics_process(delta):
+ 
+			func _physics_process(delta):
 			  if pause_simulation:
 			    return
 			   calculate_physics(delta)
@@ -198,6 +203,8 @@ Pendulum Properties:
 - Owner Assignment
 - When adding nodes dynamically, ensure they have the correct owner:
 	- node.owner = get_tree().edited_scene_root
+
+ 
 **Physics Not Updating**
 - Check _physics_process(delta)
 - Ensure that this function exists and is correctly implemented in pendulum_system.gd.
@@ -211,4 +218,5 @@ Pendulum Properties:
 - Verify that masses, lengths, and initial angles are within reasonable ranges.
  
 **License:**
+
 This project is licensed under the MIT License. See the LICENSE file for details.
