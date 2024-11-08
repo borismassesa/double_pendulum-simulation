@@ -3,8 +3,8 @@
 **Overview**
 - This project is a simulation of a double pendulum using the Godot Engine (version 4). It demonstrates the complex, chaotic. Motion of a double pendulum system in a 3D environment. The simulation uses GDScript to model both the physics and visual representation of the pendulum.
  
-(Include a screenshot of your simulation here)
- 
+![image](https://github.com/user-attachments/assets/c0c6c256-af02-4137-863c-cfa098d452d3)
+
 **Features**
 - Accurate Physics Simulation: Implements the equations of motion for a double pendulum to simulate realistic behavior.
 - Real-Time Updates: Uses the _physics_process(delta) method to update the simulation 60 times per second.
@@ -45,17 +45,17 @@
  
 **Project Structure:**
 
-					double-pendulum-godot/
-					├── assets/
-					│   └── double_pendulum_screenshot.png
-					├── scenes/
-					│   ├── Main.tscn
-					│   └── PendulumSystem.tscn
-					├── scripts/
-					│   ├── setup_scene.gd
-					│   └── pendulum_system.gd
-					├── project.godot
-					└── README.md
+	double-pendulum-godot/
+			├── assets/
+			│   └── double_pendulum_screenshot.png
+			├── scenes/
+			│   ├── Main.tscn
+			│   └── PendulumSystem.tscn
+			├── scripts/
+			│   ├── setup_scene.gd
+			│   └── pendulum_system.gd
+			├── project.godot
+			└── README.md
 			 
 - assets/: Contains images and other assets.scenes/:
 - Godot scene files.
