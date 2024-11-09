@@ -147,7 +147,7 @@ Pendulum Properties:
  
 **Example Snippet:**
 
-			func create_rod(rod_node: Node3D, rod_length: float):
+		func create_rod(rod_node: Node3D, rod_length: float):
 			var rod_mesh_instance = MeshInstance3D.new()
 			rod_node.add_child(rod_mesh_instance)
 			rod_mesh_instance.name = "RodMesh"
